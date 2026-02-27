@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { tallyUrl } from "@/content/tally";
 
 export default function MomentsSection() {
   const t = useTranslations("moments");
