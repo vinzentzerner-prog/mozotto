@@ -2,6 +2,7 @@ export interface MenuItem {
   id: string;
   nameKey: string;
   descKey: string;
+  chefRecommendation?: boolean;
 }
 
 export interface ChampagneTier {
@@ -9,17 +10,34 @@ export interface ChampagneTier {
   items: { id: string; nameKey: string; descKey: string }[];
 }
 
-export interface Upsell {
+export interface Extra {
   id: string;
   nameKey: string;
+  descKey: string;
+  optional: boolean;
 }
 
 export const risotti: MenuItem[] = [
-  { id: "classico", nameKey: "risotto_classico_name", descKey: "risotto_classico_desc" },
-  { id: "funghi", nameKey: "risotto_funghi_name", descKey: "risotto_funghi_desc" },
-  { id: "tartufo", nameKey: "risotto_tartufo_name", descKey: "risotto_tartufo_desc" },
-  { id: "zafferano", nameKey: "risotto_zafferano_name", descKey: "risotto_zafferano_desc" },
-  { id: "verdure", nameKey: "risotto_verdure_name", descKey: "risotto_verdure_desc" },
+  {
+    id: "zafferano",
+    nameKey: "risotto_zafferano_name",
+    descKey: "risotto_zafferano_desc",
+    chefRecommendation: true,
+  },
+  {
+    id: "tartufo",
+    nameKey: "risotto_tartufo_name",
+    descKey: "risotto_tartufo_desc",
+  },
+];
+
+export const extras: Extra[] = [
+  {
+    id: "bbq",
+    nameKey: "extra_bbq_name",
+    descKey: "extra_bbq_desc",
+    optional: true,
+  },
 ];
 
 export const champagneTiers: ChampagneTier[] = [
@@ -41,10 +59,4 @@ export const champagneTiers: ChampagneTier[] = [
       { id: "p1", nameKey: "champ_prestige_1_name", descKey: "champ_prestige_1_desc" },
     ],
   },
-];
-
-export const upsells: Upsell[] = [
-  { id: "truffle", nameKey: "upsell_truffle" },
-  { id: "parmesan", nameKey: "upsell_parmesan" },
-  { id: "lobster", nameKey: "upsell_lobster" },
 ];

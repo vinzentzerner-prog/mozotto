@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import EventsSection from "@/components/sections/EventsSection";
-import PackagesSection from "@/components/sections/PackagesSection";
+import MomentsSection from "@/components/sections/MomentsSection";
 import MenuSection from "@/components/sections/MenuSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import GallerySection from "@/components/sections/GallerySection";
@@ -39,7 +39,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <EventsSection />
-        <PackagesSection />
+        <MomentsSection />
         <MenuSection />
         <TestimonialsSection />
         <GallerySection />
