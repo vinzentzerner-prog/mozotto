@@ -28,9 +28,19 @@ export default function EventsSection() {
     <section id="events" className="py-24 bg-background">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Image */}
+          {/* Left: Image or Video */}
           <div className="relative aspect-[4/5] rounded-lg overflow-hidden bg-muted order-2 lg:order-1">
-            {mediaExists("events.jpg") && (
+            {mediaExists("events.mp4") ? (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/media/events.mp4" type="video/mp4" />
+              </video>
+            ) : mediaExists("events.jpg") ? (
               <Image
                 src="/media/events.jpg"
                 alt="Live Risotto cooking at an event"
@@ -40,7 +50,7 @@ export default function EventsSection() {
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUEB//EACEQAAICAQQDAQAAAAAAAAAAAAECAxEABBIhMUFRYf/EABUBAQEAAAAAAAAAAAAAAAAAAAIB/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwCl5Ol0QzJPU6uVnLc+uS3Yr2u1X1YRkE+2AAHySajvjHNXKLjX6dDwz2ORfzFKIBJA+0KUpH//2Q=="
               />
-            )}
+            ) : null}
             {/* Overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
           </div>

@@ -6,7 +6,7 @@ export interface MenuItem {
 }
 
 export interface ChampagneTier {
-  tier: "house" | "reserve" | "prestige";
+  tier: "classics" | "prestige" | "sommeliers";
   items: { id: string; nameKey: string; descKey: string }[];
 }
 
@@ -42,21 +42,25 @@ export const extras: Extra[] = [
 
 export const champagneTiers: ChampagneTier[] = [
   {
-    tier: "house",
+    tier: "classics",
     items: [
-      { id: "h1", nameKey: "champ_house_1_name", descKey: "champ_house_1_desc" },
-    ],
-  },
-  {
-    tier: "reserve",
-    items: [
-      { id: "r1", nameKey: "champ_reserve_1_name", descKey: "champ_reserve_1_desc" },
+      { id: "c1", nameKey: "champ_c1_name", descKey: "champ_c1_desc" },
+      { id: "c2", nameKey: "champ_c2_name", descKey: "champ_c2_desc" },
+      { id: "c3", nameKey: "champ_c3_name", descKey: "champ_c3_desc" },
     ],
   },
   {
     tier: "prestige",
     items: [
-      { id: "p1", nameKey: "champ_prestige_1_name", descKey: "champ_prestige_1_desc" },
+      { id: "p1", nameKey: "champ_p1_name", descKey: "champ_p1_desc" },
+      { id: "p2", nameKey: "champ_p2_name", descKey: "champ_p2_desc" },
+    ],
+  },
+  {
+    tier: "sommeliers",
+    items: [
+      { id: "s1", nameKey: "champ_s1_name", descKey: "champ_s1_desc" },
+      { id: "s2", nameKey: "champ_s2_name", descKey: "champ_s2_desc" },
     ],
   },
 ];

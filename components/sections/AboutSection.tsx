@@ -10,14 +10,16 @@ const founders = [
     nameKey: "founder_1_name" as const,
     roleKey: "founder_1_role" as const,
     bioKey: "founder_1_bio" as const,
-    image: "founder-1.jpg",
+    imageJpg: "founder-1.jpg",
+    imageMp4: "founder-1.mp4",
     alt: "Moritz – Risotto",
   },
   {
     nameKey: "founder_2_name" as const,
     roleKey: "founder_2_role" as const,
     bioKey: "founder_2_bio" as const,
-    image: "founder-2.jpg",
+    imageJpg: "founder-2.jpg",
+    imageMp4: "founder-2.mp4",
     alt: "Vinzent – Champagne",
   },
 ];
@@ -42,9 +44,19 @@ export default function AboutSection() {
             <div key={founder.nameKey} className="flex flex-col items-center text-center gap-6">
               {/* Portrait */}
               <div className="relative w-48 h-60 rounded-2xl overflow-hidden bg-muted shrink-0">
-                {mediaExists(founder.image) && (
+                {mediaExists(founder.imageMp4) ? (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                  >
+                    <source src={`/media/${founder.imageMp4}`} type="video/mp4" />
+                  </video>
+                ) : mediaExists(founder.imageJpg) ? (
                   <Image
-                    src={`/media/${founder.image}`}
+                    src={`/media/${founder.imageJpg}`}
                     alt={founder.alt}
                     fill
                     className="object-cover object-top"
@@ -52,7 +64,7 @@ export default function AboutSection() {
                     placeholder="blur"
                     blurDataURL={BLUR_PLACEHOLDER}
                   />
-                )}
+                ) : null}
                 {/* Subtle warm tint overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 to-transparent" />
               </div>
