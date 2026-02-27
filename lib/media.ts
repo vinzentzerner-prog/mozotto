@@ -1,4 +1,4 @@
-import { readdirSync, existsSync } from "fs";
+import { readdirSync } from "fs";
 import { join } from "path";
 
 const MEDIA_DIR = join(process.cwd(), "public", "media");

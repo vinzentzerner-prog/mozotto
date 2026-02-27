@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { risotti, champagneTiers, extras } from "@/content/menu";
-import { mediaExists, mediaPath } from "@/lib/media";
+import { mediaPath } from "@/lib/media";
 import { ChefHat, Flame } from "lucide-react";
 
 export default function MenuSection() {
