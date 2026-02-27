@@ -64,7 +64,7 @@ export default function HeroSection() {
               size="xl"
               className="border-white/30 text-white hover:bg-white/10 hover:text-white"
             >
-              <a href="#packages">{t("cta_secondary")}</a>
+              <a href="#events">{t("cta_secondary")}</a>
             </Button>
           </div>
 
