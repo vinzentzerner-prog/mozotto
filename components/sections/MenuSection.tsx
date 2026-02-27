@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { risotti, champagneTiers, extras } from "@/content/menu";
+import { mediaExists } from "@/lib/media";
 import { ChefHat, Flame } from "lucide-react";
 
 export default function MenuSection() {
@@ -25,17 +26,19 @@ export default function MenuSection() {
             </div>
 
             {/* Risotto video */}
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-muted mb-8">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-              >
-                <source src="/media/risotto-closeup.mp4" type="video/mp4" />
-              </video>
-            </div>
+            {mediaExists("risotto-closeup.mp4") && (
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-muted mb-8">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                >
+                  <source src="/media/risotto-closeup.mp4" type="video/mp4" />
+                </video>
+              </div>
+            )}
 
             <div className="space-y-6">
               {risotti.map((item) => (
@@ -93,43 +96,67 @@ export default function MenuSection() {
             </div>
 
             {/* Champagne video */}
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-muted mb-8">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-              >
-                <source src="/media/champagne-pour.mp4" type="video/mp4" />
-              </video>
-            </div>
+            {mediaExists("champagne-pour.mp4") && (
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-muted mb-8">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                >
+                  <source src="/media/champagne-pour.mp4" type="video/mp4" />
+                </video>
+              </div>
+            )}
 
-            <div className="space-y-4">
+            {/* Intro note */}
+            <p className="text-xs text-muted-foreground mb-5 leading-relaxed">
+              {t("champagne_intro")}
+            </p>
+
+            <div className="space-y-3">
               {champagneTiers.map((tier) => {
                 const tierLabel =
-                  tier.tier === "house"
-                    ? t("champagne_house")
-                    : tier.tier === "reserve"
-                      ? t("champagne_reserve")
-                      : t("champagne_prestige");
+                  tier.tier === "classics"
+                    ? t("champagne_classics")
+                    : tier.tier === "prestige"
+                      ? t("champagne_prestige")
+                      : t("champagne_sommeliers");
 
                 return (
-                  <div key={tier.tier} className="border border-border rounded-lg p-5">
+                  <div key={tier.tier} className="border border-border rounded-lg p-4">
                     <p className="label-xs text-accent mb-3">{tierLabel}</p>
-                    {tier.items.map((item) => (
-                      <div key={item.id}>
-                        <p className="font-serif text-base font-medium">
-                          {t(item.nameKey as Parameters<typeof t>[0])}
-                        </p>
-                        <p className="text-sm text-muted-foreground mt-1">
-                          {t(item.descKey as Parameters<typeof t>[0])}
-                        </p>
-                      </div>
-                    ))}
+                    <div className="space-y-3">
+                      {tier.items.map((item) => (
+                        <div key={item.id}>
+                          <p className="font-serif text-sm font-medium">
+                            {t(item.nameKey as Parameters<typeof t>[0])}
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-0.5 leading-snug">
+                            {t(item.descKey as Parameters<typeof t>[0])}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 );
               })}
+            </div>
+
+            {/* Pairing guide */}
+            <div className="mt-5 border border-accent/20 bg-accent/5 rounded-lg p-4 space-y-2">
+              <p className="label-xs text-accent">{t("pairing_label")}</p>
+              <div className="space-y-1">
+                <p className="text-xs text-foreground/80">
+                  <span className="font-medium">{t("pairing_tartufo")}:</span>{" "}
+                  {t("pairing_tartufo_picks")}
+                </p>
+                <p className="text-xs text-foreground/80">
+                  <span className="font-medium">{t("pairing_zafferano")}:</span>{" "}
+                  {t("pairing_zafferano_picks")}
+                </p>
+              </div>
             </div>
           </div>
         </div>
