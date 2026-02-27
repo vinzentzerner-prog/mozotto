@@ -21,7 +21,7 @@ export default function Header() {
 
   const navLinks = [
     { href: "#events", label: t("events") },
-    { href: "#packages", label: t("packages") },
+    { href: "#moments", label: t("moments") },
     { href: "#menu", label: t("menu") },
     { href: "#gallery", label: t("gallery") },
     { href: "#faq", label: t("faq") },
