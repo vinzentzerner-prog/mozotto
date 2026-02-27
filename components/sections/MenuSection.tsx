@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 import { risotti, champagneTiers, extras } from "@/content/menu";
-import Image from "next/image";
 import { ChefHat, Flame } from "lucide-react";
 
 export default function MenuSection() {
@@ -25,17 +24,17 @@ export default function MenuSection() {
               <div className="flex-1 h-px bg-border" />
             </div>
 
-            {/* Risotto image */}
+            {/* Risotto video */}
             <div className="relative aspect-video rounded-lg overflow-hidden bg-muted mb-8">
-              <Image
-                src="/media/risotto-closeup.jpg"
-                alt="Signature Risotto"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUEB//EACEQAAICAQQDAQAAAAAAAAAAAAECAxEABBIhMUFRYf/EABUBAQEAAAAAAAAAAAAAAAAAAAIB/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwCl5Ol0QzJPU6uVnLc+uS3Yr2u1X1YRkE+2AAHySajvjHNXKLjX6dDwz2ORfzFKIBJA+0KUpH//2Q=="
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/media/risotto-closeup.mp4" type="video/mp4" />
+              </video>
             </div>
 
             <div className="space-y-6">
@@ -93,17 +92,17 @@ export default function MenuSection() {
               <div className="flex-1 h-px bg-border" />
             </div>
 
-            {/* Champagne image */}
+            {/* Champagne video */}
             <div className="relative aspect-video rounded-lg overflow-hidden bg-muted mb-8">
-              <Image
-                src="/media/champagne-pour.jpg"
-                alt="Premium Champagne"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUEB//EACEQAAICAQQDAQAAAAAAAAAAAAECAxEABBIhMUFRYf/EABUBAQEAAAAAAAAAAAAAAAAAAAIB/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwCl5Ol0QzJPU6uVnLc+uS3Yr2u1X1YRkE+2AAHySajvjHNXKLjX6dDwz2ORfzFKIBJA+0KUpH//2Q=="
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/media/champagne-pour.mp4" type="video/mp4" />
+              </video>
             </div>
 
             <div className="space-y-4">
