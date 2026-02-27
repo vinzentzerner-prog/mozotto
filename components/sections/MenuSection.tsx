@@ -1,10 +1,13 @@
 import { useTranslations } from "next-intl";
 import { risotti, champagneTiers, extras } from "@/content/menu";
-import { mediaExists } from "@/lib/media";
+import { mediaExists, mediaPath } from "@/lib/media";
 import { ChefHat, Flame } from "lucide-react";
 
 export default function MenuSection() {
   const t = useTranslations("menu");
+
+  const risottoVideoPath = mediaPath("risotto-closeup.mp4");
+  const champagneVideoPath = mediaPath("champagner-pour.mp4") ?? mediaPath("champagne-pour.mp4");
 
   return (
     <section id="menu" className="py-24 bg-background">
@@ -26,7 +29,7 @@ export default function MenuSection() {
             </div>
 
             {/* Risotto video */}
-            {mediaExists("risotto-closeup.mp4") && (
+            {risottoVideoPath && (
               <div className="relative aspect-video rounded-lg overflow-hidden bg-muted mb-8">
                 <video
                   autoPlay
@@ -35,7 +38,7 @@ export default function MenuSection() {
                   playsInline
                   className="absolute inset-0 w-full h-full object-cover"
                 >
-                  <source src="/media/risotto-closeup.mp4" type="video/mp4" />
+                  <source src={risottoVideoPath} type="video/mp4" />
                 </video>
               </div>
             )}
@@ -96,7 +99,7 @@ export default function MenuSection() {
             </div>
 
             {/* Champagne video */}
-            {mediaExists("champagne-pour.mp4") && (
+            {champagneVideoPath && (
               <div className="relative aspect-video rounded-lg overflow-hidden bg-muted mb-8">
                 <video
                   autoPlay
@@ -105,7 +108,7 @@ export default function MenuSection() {
                   playsInline
                   className="absolute inset-0 w-full h-full object-cover"
                 >
-                  <source src="/media/champagne-pour.mp4" type="video/mp4" />
+                  <source src={champagneVideoPath} type="video/mp4" />
                 </video>
               </div>
             )}

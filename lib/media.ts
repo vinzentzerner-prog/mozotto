@@ -3,12 +3,27 @@ import { join } from "path";
 
 const MEDIA_DIR = join(process.cwd(), "public", "media");
 
-/** Returns true if a file exists in /public/media/ */
+/** Returns true if a file exists in /public/media/ (case-insensitive). */
 export function mediaExists(filename: string): boolean {
   try {
-    return existsSync(join(MEDIA_DIR, filename));
+    const lower = filename.toLowerCase();
+    return readdirSync(MEDIA_DIR).some((f) => f.toLowerCase() === lower);
   } catch {
     return false;
+  }
+}
+
+/**
+ * Returns the public URL path for a media file using the actual on-disk
+ * filename (case-insensitive lookup). Returns null if not found.
+ */
+export function mediaPath(filename: string): string | null {
+  try {
+    const lower = filename.toLowerCase();
+    const match = readdirSync(MEDIA_DIR).find((f) => f.toLowerCase() === lower);
+    return match ? `/media/${match}` : null;
+  } catch {
+    return null;
   }
 }
 
