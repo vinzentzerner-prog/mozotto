@@ -1,6 +1,7 @@
 {
   "nav": {
     "events": "Events",
+    "about": "Team",
     "moments": "Experience",
     "menu": "Menu",
     "gallery": "Gallery",
@@ -8,6 +9,17 @@
     "markets": "Markets",
     "contact": "Contact",
     "cta": "Request a quote"
+  },
+  "about": {
+    "label": "The Team",
+    "title": "Two passions. One experience.",
+    "subtitle": "Mozotto was born from genuine enthusiasm — for the craft of the fire and the art of the perfect Champagne.",
+    "founder_1_name": "Moritz",
+    "founder_1_role": "Risotto",
+    "founder_1_bio": "Moritz commands the fire. He's obsessed with risotto perfection — texture, temperature, every last ingredient. For him, each risotto is a small work of art.",
+    "founder_2_name": "Vinzent",
+    "founder_2_role": "Champagne",
+    "founder_2_bio": "Vinzent takes care of the Champagne. He loves finding the perfect cuvée for every occasion — one that elevates the moment and makes every sip unforgettable."
   },
   "moments": {
     "label": "For your guests",

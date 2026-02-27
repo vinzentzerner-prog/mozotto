@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import EventsSection from "@/components/sections/EventsSection";
 import MomentsSection from "@/components/sections/MomentsSection";
+import AboutSection from "@/components/sections/AboutSection";
 import MenuSection from "@/components/sections/MenuSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import GallerySection from "@/components/sections/GallerySection";
@@ -39,6 +40,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <EventsSection />
+        <AboutSection />
         <MomentsSection />
         <MenuSection />
         <TestimonialsSection />
