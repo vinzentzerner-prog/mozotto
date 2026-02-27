@@ -8,21 +8,25 @@ export default function Footer() {
   const locale = useLocale();
   const year = new Date().getFullYear();
 
-  const navLinks = [
+  const mainLinks = [
     { href: "#events", label: tNav("events") },
-    { href: "#packages", label: tNav("packages") },
     { href: "#menu", label: tNav("menu") },
+    { href: "#contact", label: tNav("contact") },
+  ];
+
+  const moreLinks = [
+    { href: "#about", label: tNav("about") },
     { href: "#gallery", label: tNav("gallery") },
     { href: "#faq", label: tNav("faq") },
-    { href: "#contact", label: tNav("contact") },
+    { href: "#markets", label: tNav("markets") },
   ];
 
   return (
     <footer className="bg-foreground text-primary-foreground">
       <div className="section-container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {/* Brand */}
-          <div className="space-y-4">
+          <div className="col-span-2 md:col-span-1 space-y-4">
             <span className="font-serif text-2xl font-medium text-white">
               Mozotto
             </span>
@@ -32,11 +36,28 @@ export default function Footer() {
             <span className="accent-line" />
           </div>
 
-          {/* Nav */}
+          {/* Main nav */}
           <div>
             <p className="label-xs text-white/40 mb-4">{t("links_title")}</p>
             <ul className="space-y-2">
-              {navLinks.map((link) => (
+              {mainLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-white/60 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* More links */}
+          <div>
+            <p className="label-xs text-white/40 mb-4">{t("more_title")}</p>
+            <ul className="space-y-2">
+              {moreLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}

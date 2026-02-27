@@ -5,12 +5,8 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import EventsSection from "@/components/sections/EventsSection";
 import MomentsSection from "@/components/sections/MomentsSection";
-import AboutSection from "@/components/sections/AboutSection";
 import MenuSection from "@/components/sections/MenuSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import GallerySection from "@/components/sections/GallerySection";
-import FAQSection from "@/components/sections/FAQSection";
-import MarketsSection from "@/components/sections/MarketsSection";
 import ContactSection from "@/components/sections/ContactSection";
 
 export async function generateMetadata({
@@ -40,13 +36,9 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <EventsSection />
-        <AboutSection />
         <MomentsSection />
         <MenuSection />
         <TestimonialsSection />
-        <GallerySection />
-        <FAQSection />
-        <MarketsSection />
         <ContactSection />
       </main>
       <Footer />
