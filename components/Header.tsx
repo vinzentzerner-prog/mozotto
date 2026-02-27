@@ -21,12 +21,8 @@ export default function Header() {
 
   const navLinks = [
     { href: "#events", label: t("events") },
-    { href: "#about", label: t("about") },
     { href: "#moments", label: t("moments") },
     { href: "#menu", label: t("menu") },
-    { href: "#gallery", label: t("gallery") },
-    { href: "#faq", label: t("faq") },
-    { href: "#markets", label: t("markets") },
     { href: "#contact", label: t("contact") },
   ];
 
