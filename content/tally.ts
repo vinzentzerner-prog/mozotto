@@ -1,5 +1,9 @@
-// Replace with your actual Tally form ID from tally.so
-export const tallyFormId = "YOUR_TALLY_FORM_ID";
+export const tallyForms: Record<string, string> = {
+  en: "9qdvZK",
+  de: "5BdvZv",
+};
 
-// Replace with your actual Tally form URL
-export const tallyUrl = "https://tally.so/r/YOUR_TALLY_FORM_ID";
+/** Returns the Tally form ID for the given locale, falling back to DE. */
+export function getTallyFormId(locale: string): string {
+  return tallyForms[locale] ?? tallyForms.de;
+}
