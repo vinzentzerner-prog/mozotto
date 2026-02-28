@@ -20,10 +20,10 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "#events", label: t("events") },
-    { href: "#moments", label: t("moments") },
-    { href: "#menu", label: t("menu") },
-    { href: "#contact", label: t("contact") },
+    { href: `/${locale}#events`, label: t("events") },
+    { href: `/${locale}#moments`, label: t("moments") },
+    { href: `/${locale}#menu`, label: t("menu") },
+    { href: `/${locale}#contact`, label: t("contact") },
   ];
 
   const otherLocale = locale === "de" ? "en" : "de";
@@ -55,7 +55,7 @@ export default function Header() {
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
@@ -64,7 +64,7 @@ export default function Header() {
                   )}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
 
@@ -111,14 +111,14 @@ export default function Header() {
           <div className="lg:hidden bg-background border-t border-border">
             <div className="section-container py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className="py-3 text-sm font-medium text-foreground/80 hover:text-accent border-b border-border last:border-0 transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <div className="pt-4 flex items-center gap-3">
                 <Button asChild variant="default" size="sm" className="flex-1">
