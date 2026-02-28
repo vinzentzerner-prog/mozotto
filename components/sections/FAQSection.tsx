@@ -15,7 +15,7 @@ export default function FAQSection() {
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
           {/* Sticky header */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-4 lg:sticky lg:top-28 lg:self-start">
             <span className="label-xs text-accent">{t("label")}</span>
             <span className="accent-line" />
             <h2 className="font-serif text-4xl md:text-5xl font-medium leading-tight">

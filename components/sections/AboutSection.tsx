@@ -43,7 +43,7 @@ export default function AboutSection() {
           {founders.map((founder) => (
             <div key={founder.nameKey} className="flex flex-col items-center text-center gap-6">
               {/* Portrait */}
-              <div className="relative w-48 h-60 rounded-2xl overflow-hidden bg-muted shrink-0">
+              <div className="relative w-56 h-72 rounded-2xl overflow-hidden bg-muted shrink-0">
                 {(() => {
                   const mp4 = mediaPath(founder.imageMp4);
                   const jpg = mediaPath(founder.imageJpg);

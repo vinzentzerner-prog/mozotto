@@ -22,12 +22,12 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-20 bg-foreground">
+    <section className="py-24 bg-foreground">
       <div className="section-container">
-        <div className="text-center space-y-4 mb-14">
+        <div className="text-center space-y-4 mb-16">
           <span className="label-xs text-white/40">{t("label")}</span>
-          <span className="block w-10 h-px bg-accent mx-auto" />
-          <h2 className="font-serif text-3xl md:text-4xl font-medium text-white">
+          <span className="accent-line mx-auto" />
+          <h2 className="font-serif text-4xl md:text-5xl font-medium text-white">
             {t("title")}
           </h2>
         </div>

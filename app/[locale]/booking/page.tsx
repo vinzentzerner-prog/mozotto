@@ -23,12 +23,20 @@ export async function generateMetadata({
 
   return {
     title: t("title"),
-    description: t("subtitle"),
+    description:
+      locale === "de"
+        ? "Anfrage für dein Live-Risotto & Champagne Event in der Schweiz. Wir antworten innerhalb von 24 Stunden."
+        : "Request a quote for your live risotto & Champagne event in Switzerland. We respond within 24 hours.",
+    alternates: {
+      canonical: `/${locale}/booking`,
+      languages: { de: "/de/booking", en: "/en/booking" },
+    },
   };
 }
 
 function BookingPageContent() {
   const t = useTranslations("booking");
+  const tNav = useTranslations("nav");
   const locale = useLocale();
 
   const steps = [
@@ -138,9 +146,9 @@ function BookingPageContent() {
               </div>
               <div className="mt-8 text-center">
                 <Button asChild variant="outline" size="sm">
-                  <Link href="/#gallery">
+                  <Link href={`/${locale}/gallery`}>
                     <ArrowRight size={14} />
-                    Zur Galerie
+                    {tNav("gallery")}
                   </Link>
                 </Button>
               </div>
