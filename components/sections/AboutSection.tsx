@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { mediaExists } from "@/lib/media";
+import { mediaPath } from "@/lib/media";
 
 const BLUR_PLACEHOLDER =
   "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUEB//EACEQAAICAQQDAQAAAAAAAAAAAAECAxEABBIhMUFRYf/EABUBAQEAAAAAAAAAAAAAAAAAAAIB/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwCl5Ol0QzJPU6uVnLc+uS3Yr2u1X1YRkE+2AAHySajvjHNXKLjX6dDwz2ORfzFKIBJA+0KUpH//2Q==";
@@ -44,27 +44,35 @@ export default function AboutSection() {
             <div key={founder.nameKey} className="flex flex-col items-center text-center gap-6">
               {/* Portrait */}
               <div className="relative w-48 h-60 rounded-2xl overflow-hidden bg-muted shrink-0">
-                {mediaExists(founder.imageMp4) ? (
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover object-top"
-                  >
-                    <source src={`/media/${founder.imageMp4}`} type="video/mp4" />
-                  </video>
-                ) : mediaExists(founder.imageJpg) ? (
-                  <Image
-                    src={`/media/${founder.imageJpg}`}
-                    alt={founder.alt}
-                    fill
-                    className="object-cover object-top"
-                    sizes="192px"
-                    placeholder="blur"
-                    blurDataURL={BLUR_PLACEHOLDER}
-                  />
-                ) : null}
+                {(() => {
+                  const mp4 = mediaPath(founder.imageMp4);
+                  const jpg = mediaPath(founder.imageJpg);
+                  if (mp4)
+                    return (
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover object-top"
+                      >
+                        <source src={mp4} type="video/mp4" />
+                      </video>
+                    );
+                  if (jpg)
+                    return (
+                      <Image
+                        src={jpg}
+                        alt={founder.alt}
+                        fill
+                        className="object-cover object-top"
+                        sizes="192px"
+                        placeholder="blur"
+                        blurDataURL={BLUR_PLACEHOLDER}
+                      />
+                    );
+                  return null;
+                })()}
                 {/* Subtle warm tint overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/15 to-transparent" />
               </div>
