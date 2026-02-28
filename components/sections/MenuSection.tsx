@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { risotti, champagneTiers, extras } from "@/content/menu";
 import { mediaPath } from "@/lib/media";
-import { ChefHat, Flame } from "lucide-react";
+import { ChefHat, Flame, Users } from "lucide-react";
 
 export default function MenuSection() {
   const t = useTranslations("menu");
@@ -68,17 +68,28 @@ export default function MenuSection() {
               {/* Extras / optional add-ons */}
               {extras.map((extra) => (
                 <div key={extra.id} className="flex items-start gap-3 pt-2">
-                  <div className="shrink-0 w-8 h-8 rounded-full bg-muted flex items-center justify-center mt-0.5">
-                    <Flame size={14} className="text-muted-foreground" />
+                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center mt-0.5 ${extra.personalMenu ? "bg-accent/10" : "bg-muted"}`}>
+                    {extra.personalMenu
+                      ? <Users size={14} className="text-accent" />
+                      : <Flame size={14} className="text-muted-foreground" />
+                    }
                   </div>
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
                       <p className="font-serif text-base font-medium">
                         {t(extra.nameKey as Parameters<typeof t>[0])}
                       </p>
-                      <span className="label-xs text-muted-foreground border border-border rounded-full px-2 py-0.5">
-                        {t("optional")}
-                      </span>
+                      {extra.personalMenu
+                        ? (
+                          <span className="label-xs text-accent border border-accent/30 bg-accent/5 rounded-full px-2 py-0.5">
+                            {t("personal_menu")}
+                          </span>
+                        ) : (
+                          <span className="label-xs text-muted-foreground border border-border rounded-full px-2 py-0.5">
+                            {t("optional")}
+                          </span>
+                        )
+                      }
                     </div>
                     <p className="text-sm text-muted-foreground mt-1">
                       {t(extra.descKey as Parameters<typeof t>[0])}
