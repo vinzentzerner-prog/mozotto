@@ -9,16 +9,16 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   const mainLinks = [
-    { href: "#events", label: tNav("events") },
-    { href: "#menu", label: tNav("menu") },
-    { href: "#contact", label: tNav("contact") },
+    { href: `/${locale}#events`, label: tNav("events") },
+    { href: `/${locale}#menu`, label: tNav("menu") },
+    { href: `/${locale}#contact`, label: tNav("contact") },
   ];
 
   const moreLinks = [
     { href: `/${locale}/about`, label: tNav("about") },
-    { href: "#gallery", label: tNav("gallery") },
-    { href: "#faq", label: tNav("faq") },
-    { href: "#markets", label: tNav("markets") },
+    { href: `/${locale}/gallery`, label: tNav("gallery") },
+    { href: `/${locale}/faq`, label: tNav("faq") },
+    { href: `/${locale}/markets`, label: tNav("markets") },
   ];
 
   return (
@@ -42,12 +42,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {mainLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-white/60 hover:text-white transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -57,27 +57,16 @@ export default function Footer() {
           <div>
             <p className="label-xs text-white/40 mb-4">{t("more_title")}</p>
             <ul className="space-y-2">
-              {moreLinks.map((link) =>
-                link.href.startsWith("/") ? (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-white/60 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ) : (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-white/60 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                )
-              )}
+              {moreLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/60 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Flame, Sparkles, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
-import { mediaExists } from "@/lib/media";
+import { mediaExists, mediaPath } from "@/lib/media";
 
 export default function EventsSection() {
   const t = useTranslations("events");
@@ -24,13 +24,18 @@ export default function EventsSection() {
     },
   ];
 
+  // Prefer Mozotto-second-section.mp4, then fall back to events.mp4
+  const videoSrc =
+    mediaPath("Mozotto-second-section.mp4") ?? mediaPath("events.mp4");
+  const imageSrc = mediaExists("events.jpg") ? "/media/events.jpg" : null;
+
   return (
     <section id="events" className="py-24 bg-background">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Image or Video */}
+          {/* Left: Video or Image */}
           <div className="relative aspect-[4/5] rounded-lg overflow-hidden bg-muted order-2 lg:order-1">
-            {mediaExists("events.mp4") ? (
+            {videoSrc ? (
               <video
                 autoPlay
                 loop
@@ -38,11 +43,11 @@ export default function EventsSection() {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover"
               >
-                <source src="/media/events.mp4" type="video/mp4" />
+                <source src={videoSrc} type="video/mp4" />
               </video>
-            ) : mediaExists("events.jpg") ? (
+            ) : imageSrc ? (
               <Image
-                src="/media/events.jpg"
+                src={imageSrc}
                 alt="Live Risotto cooking at an event"
                 fill
                 className="object-cover"
