@@ -15,6 +15,7 @@ export interface Extra {
   nameKey: string;
   descKey: string;
   optional: boolean;
+  personalMenu?: boolean;
 }
 
 export const risotti: MenuItem[] = [
@@ -37,6 +38,13 @@ export const extras: Extra[] = [
     nameKey: "extra_bbq_name",
     descKey: "extra_bbq_desc",
     optional: true,
+  },
+  {
+    id: "personal",
+    nameKey: "extra_personal_name",
+    descKey: "extra_personal_desc",
+    optional: true,
+    personalMenu: true,
   },
 ];
 
