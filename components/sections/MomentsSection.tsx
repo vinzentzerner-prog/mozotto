@@ -18,7 +18,7 @@ export default function MomentsSection() {
         <div className="max-w-3xl mx-auto text-center space-y-8">
           {/* Label */}
           <span className="label-xs text-white/40">{t("label")}</span>
-          <span className="block w-10 h-px bg-accent mx-auto" />
+          <span className="accent-line mx-auto" />
 
           {/* Headline */}
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-white leading-tight">

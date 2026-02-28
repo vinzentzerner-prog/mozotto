@@ -17,7 +17,7 @@ export default function MarketsSection() {
           {/* Header + image */}
           <div className="space-y-6">
             <div className="space-y-3">
-              <span className="label-xs text-muted-foreground">{t("label")}</span>
+              <span className="label-xs text-accent">{t("label")}</span>
               <span className="accent-line" />
               <h2 className="font-serif text-3xl font-medium">{t("title")}</h2>
               <p className="text-sm text-muted-foreground leading-relaxed">

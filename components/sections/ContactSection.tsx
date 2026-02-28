@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Mail } from "lucide-react";
 
 export default function ContactSection() {
   const t = useTranslations("contact");
+  const tNav = useTranslations("nav");
   const locale = useLocale();
 
   return (
@@ -20,26 +20,9 @@ export default function ContactSection() {
             <p className="text-muted-foreground">{t("subtitle")}</p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button asChild size="lg" variant="default">
-              <Link href={`/${locale}/booking`}>
-                <Mail size={16} />
-                {t("email")}
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <a
-                href="https://wa.me/41000000000"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle size={16} />
-                {t("whatsapp")}
-              </a>
-            </Button>
-          </div>
-
-          <p className="text-xs text-muted-foreground">{t("note")}</p>
+          <Button asChild size="xl" variant="accent">
+            <Link href={`/${locale}/booking`}>{tNav("cta")}</Link>
+          </Button>
         </div>
       </div>
     </section>
