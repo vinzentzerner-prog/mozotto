@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/Header";
@@ -29,6 +29,7 @@ export async function generateMetadata({
 
 function BookingPageContent() {
   const t = useTranslations("booking");
+  const locale = useLocale();
 
   const steps = [
     { step: "01", title: t("step_1"), desc: t("step_1_desc") },
@@ -91,7 +92,7 @@ function BookingPageContent() {
 
               {/* Tally Form */}
               <div className="lg:col-span-3">
-                <TallyEmbed />
+                <TallyEmbed locale={locale} />
               </div>
             </div>
           </div>
