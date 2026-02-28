@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/sections/HeroSection";
@@ -15,16 +14,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "hero" });
 
   return {
     title: "Mozotto – Live Risotto & Champagne Events Schweiz",
-    description: t("subline"),
+    description:
+      locale === "de"
+        ? "Live-Risotto über Holzfeuer & Premium Champagne für Firmen- und Privatevents in der Schweiz. Catering Zürich, Bern, Basel. Anfrage in 24h beantwortet."
+        : "Live risotto over a wood fire & premium Champagne for corporate and private events in Switzerland. Catering Zurich, Bern, Basel.",
     alternates: {
-      languages: {
-        de: "/de",
-        en: "/en",
-      },
+      canonical: `/${locale}`,
+      languages: { de: "/de", en: "/en" },
     },
   };
 }
