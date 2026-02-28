@@ -274,7 +274,7 @@ function AgbContent() {
                 email.
               </p>
               <p>
-                2.3 Unless otherwise stated, moZotto's offer is valid for 14 days from the date of
+                2.3 Unless otherwise stated, moZotto&apos;s offer is valid for 14 days from the date of
                 issue.
               </p>
             </>
@@ -328,7 +328,7 @@ function AgbContent() {
             <>
               <p>
                 5.1 Cancellations must be submitted in writing by email and take effect from receipt
-                of moZotto's written confirmation of cancellation.
+                of moZotto&apos;s written confirmation of cancellation.
               </p>
               <p>
                 5.2 Cancellation more than 30 days before the event: deposit refunded less a
@@ -398,7 +398,7 @@ function AgbContent() {
                 excluded.
               </p>
               <p>
-                8.3 moZotto's total liability is limited to the value of the respective contract.
+                8.3 moZotto&apos;s total liability is limited to the value of the respective contract.
               </p>
               <p>
                 8.4 moZotto is not liable for allergic reactions or intolerances if the client
