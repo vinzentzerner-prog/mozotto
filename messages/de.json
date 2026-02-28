@@ -140,10 +140,7 @@
   "contact": {
     "label": "Kontakt",
     "title": "Sprechen Sie mit uns",
-    "subtitle": "Wir antworten innerhalb von 24 Stunden.",
-    "whatsapp": "WhatsApp",
-    "email": "E-Mail schreiben",
-    "note": "Für Anfragen und Buchungen bevorzugen wir das Buchungsformular."
+    "subtitle": "Alle Anfragen und Buchungen laufen über unser Formular – so können wir optimal vorbereitet antworten."
   },
   "booking": {
     "label": "Buchung",
@@ -167,14 +164,16 @@
     "legal_title": "Rechtliches",
     "impressum": "Impressum",
     "privacy": "Datenschutz",
+    "agb": "AGB",
     "copyright": "© {year} Mozotto. Alle Rechte vorbehalten."
   },
   "impressum": {
-    "title": "Impressum",
-    "content": "Angaben gemäss Schweizer Recht. Verantwortlich für den Inhalt dieser Website: Mozotto, Schweiz. Für Fragen wenden Sie sich bitte per E-Mail an uns."
+    "title": "Impressum"
   },
   "privacy": {
-    "title": "Datenschutz",
-    "content": "Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir erheben nur Daten, die Sie uns über das Kontaktformular freiwillig mitteilen, und verwenden diese ausschliesslich zur Bearbeitung Ihrer Anfrage."
+    "title": "Datenschutzerklärung"
+  },
+  "agb": {
+    "title": "Allgemeine Geschäftsbedingungen"
   }
 }

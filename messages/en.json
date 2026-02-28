@@ -140,10 +140,7 @@
   "contact": {
     "label": "Contact",
     "title": "Get in touch",
-    "subtitle": "We respond within 24 hours.",
-    "whatsapp": "WhatsApp",
-    "email": "Send an email",
-    "note": "For enquiries and bookings, we prefer the booking form."
+    "subtitle": "All enquiries and bookings go through our form — so we can respond fully prepared."
   },
   "booking": {
     "label": "Booking",
@@ -167,14 +164,16 @@
     "legal_title": "Legal",
     "impressum": "Legal notice",
     "privacy": "Privacy policy",
+    "agb": "T&Cs",
     "copyright": "© {year} Mozotto. All rights reserved."
   },
   "impressum": {
-    "title": "Legal notice",
-    "content": "Information pursuant to Swiss law. Responsible for the content of this website: Mozotto, Switzerland. For questions, please contact us by email."
+    "title": "Legal notice"
   },
   "privacy": {
-    "title": "Privacy policy",
-    "content": "Protecting your personal data is important to us. We only collect data you voluntarily provide via the contact form, and use it exclusively to process your enquiry."
+    "title": "Privacy policy"
+  },
+  "agb": {
+    "title": "Terms & Conditions"
   }
 }

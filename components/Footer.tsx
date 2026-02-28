@@ -90,6 +90,14 @@ export default function Footer() {
                   {t("privacy")}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={`/${locale}/agb`}
+                  className="text-sm text-white/60 hover:text-white transition-colors"
+                >
+                  {t("agb")}
+                </Link>
+              </li>
             </ul>
 
             {/* Locale */}
