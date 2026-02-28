@@ -15,7 +15,7 @@ export default function Footer() {
   ];
 
   const moreLinks = [
-    { href: "#about", label: tNav("about") },
+    { href: `/${locale}/about`, label: tNav("about") },
     { href: "#gallery", label: tNav("gallery") },
     { href: "#faq", label: tNav("faq") },
     { href: "#markets", label: tNav("markets") },
@@ -57,16 +57,27 @@ export default function Footer() {
           <div>
             <p className="label-xs text-white/40 mb-4">{t("more_title")}</p>
             <ul className="space-y-2">
-              {moreLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-white/60 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {moreLinks.map((link) =>
+                link.href.startsWith("/") ? (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/60 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-white/60 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 

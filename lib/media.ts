@@ -34,18 +34,33 @@ type GalleryItem =
 /**
  * Reads /public/media/ and returns all gallery-* files in sorted order.
  * Supports .jpg .jpeg .webp .png (image) and .mp4 .mov (video).
+ * When both a video and an image share the same gallery number, only the
+ * video is returned (avoids duplicates when a poster image is also present).
  */
 export function getGalleryItems(): GalleryItem[] {
   try {
-    return readdirSync(MEDIA_DIR)
-      .filter((f) =>
-        /^gallery-\d+\.(jpg|jpeg|webp|png|mp4|mov)$/i.test(f)
-      )
-      .sort()
-      .map((f) => ({
-        type: /\.(mp4|mov)$/i.test(f) ? "video" : "image",
-        src: `/media/${f}`,
-      }));
+    const files = readdirSync(MEDIA_DIR).filter((f) =>
+      /^gallery-\d+\.(jpg|jpeg|webp|png|mp4|mov)$/i.test(f)
+    );
+
+    // Group by number, prefer video over image
+    const byNumber = new Map<string, string>();
+    for (const f of files) {
+      const num = f.match(/^gallery-(\d+)\./i)![1];
+      const isVideo = /\.(mp4|mov)$/i.test(f);
+      const existing = byNumber.get(num);
+      if (!existing || isVideo) byNumber.set(num, f);
+    }
+
+    return [...byNumber.keys()]
+      .sort((a, b) => Number(a) - Number(b))
+      .map((num) => {
+        const f = byNumber.get(num)!;
+        return {
+          type: /\.(mp4|mov)$/i.test(f) ? "video" : "image",
+          src: `/media/${f}`,
+        };
+      });
   } catch {
     return [];
   }
