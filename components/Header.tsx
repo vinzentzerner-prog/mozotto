@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -10,8 +11,13 @@ import { cn } from "@/lib/utils";
 export default function Header() {
   const t = useTranslations("nav");
   const locale = useLocale();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Only use transparent mode on the homepage (the hero video provides the dark bg)
+  const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
+  const solid = !isHomePage || scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -34,7 +40,7 @@ export default function Header() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          scrolled
+          solid
             ? "bg-background/95 backdrop-blur-sm border-b border-border shadow-sm"
             : "bg-transparent"
         )}
@@ -46,7 +52,7 @@ export default function Header() {
               href={`/${locale}`}
               className={cn(
                 "font-serif text-xl font-medium tracking-wide transition-colors",
-                scrolled ? "text-foreground" : "text-white"
+                solid ? "text-foreground" : "text-white"
               )}
             >
               Mozotto
@@ -60,7 +66,7 @@ export default function Header() {
                   href={link.href}
                   className={cn(
                     "text-sm font-sans font-medium transition-colors hover:text-accent",
-                    scrolled ? "text-foreground/80" : "text-white/80"
+                    solid ? "text-foreground/80" : "text-white/80"
                   )}
                 >
                   {link.label}
@@ -75,7 +81,7 @@ export default function Header() {
                 href={`/${otherLocale}`}
                 className={cn(
                   "label-xs transition-colors hover:text-accent hidden sm:block",
-                  scrolled ? "text-muted-foreground" : "text-white/60"
+                  solid ? "text-muted-foreground" : "text-white/60"
                 )}
               >
                 {otherLocaleLabel}
@@ -84,7 +90,7 @@ export default function Header() {
               {/* CTA */}
               <Button
                 asChild
-                variant={scrolled ? "default" : "accent"}
+                variant={solid ? "default" : "accent"}
                 size="sm"
                 className="hidden sm:inline-flex"
               >
@@ -95,7 +101,7 @@ export default function Header() {
               <button
                 className={cn(
                   "lg:hidden p-2 transition-colors",
-                  scrolled ? "text-foreground" : "text-white"
+                  solid ? "text-foreground" : "text-white"
                 )}
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label="Toggle menu"
