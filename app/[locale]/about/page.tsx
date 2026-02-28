@@ -11,7 +11,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about" });
-  return { title: t("title") };
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+    alternates: { canonical: `/${locale}/about`, languages: { de: "/de/about", en: "/en/about" } },
+  };
 }
 
 export default function AboutPage() {

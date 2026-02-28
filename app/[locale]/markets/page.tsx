@@ -13,7 +13,11 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "markets" });
   return {
     title: `${t("title")} – Mozotto`,
-    description: t("subtitle"),
+    description:
+      locale === "de"
+        ? "Mozotto an Schweizer Weihnachtsmärkten – Zürich, Bern, Basel. Live-Risotto über Holzfeuer und Premium Champagne an ausgewählten Standorten."
+        : "Mozotto at Swiss Christmas markets — Zurich, Bern, Basel. Live risotto over wood fire and premium Champagne at selected locations.",
+    alternates: { canonical: `/${locale}/markets`, languages: { de: "/de/markets", en: "/en/markets" } },
   };
 }
 
