@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { risotti, champagneTiers, extras } from "@/content/menu";
 import { mediaPath } from "@/lib/media";
-import { ChefHat, Flame, Users } from "lucide-react";
+import { ChefHat, Flame, Leaf, Users } from "lucide-react";
 
 export default function MenuSection() {
   const t = useTranslations("menu");
@@ -26,6 +26,12 @@ export default function MenuSection() {
             <div className="flex items-center gap-4 mb-8">
               <h3 className="font-serif text-2xl font-medium">{t("risotto_title")}</h3>
               <div className="flex-1 h-px bg-border" />
+            </div>
+
+            {/* Bio badge */}
+            <div className="flex items-center gap-1.5 mb-6 text-xs text-accent font-sans font-medium">
+              <Leaf size={13} />
+              <span>{t("bio_note")}</span>
             </div>
 
             {/* Risotto video */}
