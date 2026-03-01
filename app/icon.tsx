@@ -3,22 +3,9 @@ import { ImageResponse } from "next/og";
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-export default async function Icon() {
-  // Fetch Cormorant Garamond Medium from Google Fonts
-  let fontData: ArrayBuffer | undefined;
-  try {
-    const css = await fetch(
-      "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500",
-      { headers: { "User-Agent": "Mozilla/5.0 (compatible; Googlebot)" } }
-    ).then((r) => r.text());
-    const match = css.match(/src:\s*url\(([^)]+\.woff2)\)/);
-    if (match?.[1]) {
-      fontData = await fetch(match[1]).then((r) => r.arrayBuffer());
-    }
-  } catch {
-    // Falls back to Georgia below
-  }
-
+// Drawn as SVG paths — no font required (Satori needs a font to render text,
+// and network fetches can silently fail at deploy time).
+export default function Icon() {
   return new ImageResponse(
     (
       <div
@@ -32,34 +19,17 @@ export default async function Icon() {
           borderRadius: "4px",
         }}
       >
-        <span
-          style={{
-            fontFamily: fontData ? "Cormorant Garamond" : "Georgia, serif",
-            fontSize: 22,
-            fontWeight: 500,
-            color: "#BC934E",
-            lineHeight: 1,
-            marginTop: 2,
-          }}
-        >
-          Z
-        </span>
+        {/* Bold geometric Z: top bar + diagonal parallelogram + bottom bar */}
+        <svg width="20" height="22" viewBox="0 0 20 22" fill="#BC934E">
+          {/* Top bar */}
+          <rect x="0" y="0" width="20" height="3.5" />
+          {/* Diagonal — parallelogram from top-right to bottom-left */}
+          <polygon points="20,3.5 20,8 0,18.5 0,14" />
+          {/* Bottom bar */}
+          <rect x="0" y="18.5" width="20" height="3.5" />
+        </svg>
       </div>
     ),
-    {
-      ...size,
-      ...(fontData
-        ? {
-            fonts: [
-              {
-                name: "Cormorant Garamond",
-                data: fontData,
-                style: "normal" as const,
-                weight: 500,
-              },
-            ],
-          }
-        : {}),
-    }
+    { ...size }
   );
 }
