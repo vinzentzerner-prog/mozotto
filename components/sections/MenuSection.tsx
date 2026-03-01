@@ -28,15 +28,9 @@ export default function MenuSection() {
               <div className="flex-1 h-px bg-border" />
             </div>
 
-            {/* Bio badge */}
-            <div className="flex items-center gap-1.5 mb-6 text-xs text-accent font-sans font-medium">
-              <Leaf size={13} />
-              <span>{t("bio_note")}</span>
-            </div>
-
             {/* Risotto video */}
             {risottoVideoPath && (
-              <div className="relative aspect-video rounded-lg overflow-hidden bg-muted mb-8">
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-muted mb-4">
                 <video
                   autoPlay
                   loop
@@ -48,6 +42,12 @@ export default function MenuSection() {
                 </video>
               </div>
             )}
+
+            {/* Bio badge */}
+            <div className="flex items-center gap-1.5 mb-8 text-xs text-accent font-sans font-medium">
+              <Leaf size={13} />
+              <span>{t("bio_note")}</span>
+            </div>
 
             <div className="space-y-6">
               {risotti.map((item) => (
