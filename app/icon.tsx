@@ -7,13 +7,14 @@ export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
 export default function Icon() {
-  // If a hand-crafted PNG has been placed at public/favicon.png, serve it
-  // directly — most reliable cross-browser approach.
-  try {
-    const png = readFileSync(join(process.cwd(), "public", "favicon.png"));
-    return new Response(png, { headers: { "Content-Type": "image/png" } });
-  } catch {
-    // No PNG uploaded yet — fall through to generated icon.
+  // Serve a hand-crafted PNG if one exists in public/ — try both common names.
+  for (const name of ["favicon-32x32.png", "favicon.png"]) {
+    try {
+      const png = readFileSync(join(process.cwd(), "public", name));
+      return new Response(png, { headers: { "Content-Type": "image/png" } });
+    } catch {
+      // try next
+    }
   }
 
   // Fallback: geometric Z drawn as SVG paths (no font required).
