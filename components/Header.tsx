@@ -55,7 +55,7 @@ export default function Header() {
                 solid ? "text-foreground" : "text-white"
               )}
             >
-              Mozotto
+              mo<span className="text-accent">Z</span>otto
             </Link>
 
             {/* Desktop Nav */}
