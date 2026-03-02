@@ -107,6 +107,8 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
+        <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="shortcut icon" href="/favicon-32x32.png" type="image/png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
